@@ -19,8 +19,6 @@ artifactory {
 		}
 		defaults {
 			publications('mavenJava')
-			publishArtifacts = true
-			publishPom = true
 		}
 	}
 }
@@ -34,12 +32,6 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			from components.java
-		}
-	}
-	repositories {
-		maven {
-			name = "local"
-			url = "${rootProject.buildDir}/publications/repos"
 		}
 	}
 }
