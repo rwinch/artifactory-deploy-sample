@@ -1,0 +1,6 @@
+Demo to publish to artifactory.
+
+[source,bash]
+----
+./gradlew artifactoryPublish -PartifactoryUsername="$ARTIFACTORY_USERNAME" -PartifactoryPassword="$ARTIFACTORY_PASSWORD" --stacktrace
+----
