@@ -1,0 +1,37 @@
+plugins {
+	id	'java'
+	id	'maven-publish'
+	id	'com.jfrog.artifactory'	version '4.27.0'
+}
+
+group = 'sample'
+version = '1.0.0-SNAPSHOT'
+
+artifactory {
+	contextUrl = 'https://repo.spring.io'
+	publish {
+		repository {
+			repoKey = 'libs-snapshot-local'
+			if(project.hasProperty('artifactoryUsername')) {
+				username = artifactoryUsername
+				password = artifactoryPassword
+			}
+		}
+		defaults {
+			publications('mavenJava')
+		}
+	}
+}
+
+java {
+	withJavadocJar()
+	withSourcesJar()
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+}
